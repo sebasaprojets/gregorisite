@@ -7,7 +7,8 @@ import { SectionLabel } from "@/components/ui/reveal";
 // pesar no carregamento inicial nem no HTML pré-renderizado.
 const FlashlightTextReveal = lazy(() => import("@/components/ui/flashlight-text-reveal"));
 
-const TEXT = "QUANDO CADA\nSEGUNDO\nCONTA";
+// A mesma frase que está no topo do site.
+const TEXT = "PREPARAR PESSOAS\nPARA AGIR QUANDO\nCADA SEGUNDO CONTA";
 const FONT = '"Chakra Petch", Impact, "Arial Narrow Bold", sans-serif';
 const GHOST = 0.05;
 const WALL = ["#0B0C0E", "#2B1014", "#6E1A26"];
@@ -79,16 +80,16 @@ export function Manifesto() {
               text={TEXT}
               textColor="#f2f5f7"
               fontFamily={FONT}
-              fontSize="clamp(2.4rem, 8.5vw, 7rem)"
+              fontSize="clamp(1.5rem, 5.2vw, 4.4rem)"
               ghost={GHOST}
               colors={WALL}
               height="min(88svh, 760px)"
-              // No celular o dedo tapa o ponto exato, então a luz é mais larga;
-              // sem desfoque e com menos granulado o shader fica bem mais leve.
               paused={!onScreen}
-              // O shader preenche a tela toda: no celular render a menos de um
+              // O shader preenche a tela toda: no celular, render a menos de um
               // pixel físico por pixel CSS corta quase metade do trabalho.
               maxDpr={touch ? 1.25 : 2}
+              // No celular o dedo tapa o ponto exato, então a luz é mais larga;
+              // sem desfoque e com menos granulado o shader fica bem mais leve.
               radius={touch ? 0.46 : 0.34}
               blur={touch ? 0 : 0.016}
               grain={touch ? 0.09 : 0.14}
@@ -114,7 +115,7 @@ export function Manifesto() {
                 color: "#f2f5f7",
                 opacity: GHOST,
                 fontFamily: FONT,
-                fontSize: "clamp(2.4rem, 8.5vw, 7rem)",
+                fontSize: "clamp(1.5rem, 5.2vw, 4.4rem)",
                 lineHeight: 0.88,
                 whiteSpace: "pre-line",
               }}
