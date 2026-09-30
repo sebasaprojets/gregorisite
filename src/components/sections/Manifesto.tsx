@@ -7,8 +7,9 @@ import { SectionLabel } from "@/components/ui/reveal";
 // pesar no carregamento inicial nem no HTML pré-renderizado.
 const FlashlightTextReveal = lazy(() => import("@/components/ui/flashlight-text-reveal"));
 
-// A mesma frase que está no topo do site.
-const TEXT = "PREPARAR PESSOAS\nPARA AGIR QUANDO\nCADA SEGUNDO CONTA";
+// O centro do que ele ensina (Stop the Bleed, TECC/TCCC): quem está ao lado
+// da vítima é quem age nos primeiros minutos, antes do socorro chegar.
+const TEXT = "ATÉ O SOCORRO\nCHEGAR, QUEM SALVA\nÉ QUEM ESTÁ DO LADO";
 const FONT = '"Chakra Petch", Impact, "Arial Narrow Bold", sans-serif';
 const GHOST = 0.05;
 const WALL = ["#0B0C0E", "#2B1014", "#6E1A26"];
