@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { m, useScroll, useTransform } from "framer-motion";
-import { ArrowDown, MessageCircle, ShieldCheck } from "lucide-react";
+import { ArrowDown, ArrowRight, MessageCircle, ShieldCheck } from "lucide-react";
 import { profile } from "@/data/profile";
 import { MagneticButton } from "@/components/ui/magnetic-button";
 import { ScrambleText } from "@/components/ui/scramble-text";
@@ -18,12 +18,9 @@ export function Hero() {
 
   return (
     <section ref={ref} id="top" className="noise relative isolate flex min-h-[100svh] items-center overflow-hidden pt-28 pb-16">
-      {/* Fundo: grade, brilhos e linha de varredura */}
+      {/* Linha de varredura sobre o fundo fixo do site */}
       <div aria-hidden className="absolute inset-0 -z-10">
-        <div className="bg-grid mask-radial absolute inset-0" />
-        <div className="absolute -left-40 top-10 h-[640px] w-[640px] glow-red" />
-        <div className="absolute -right-40 bottom-0 h-[560px] w-[560px] glow-cyan" />
-        <div className="absolute inset-x-0 top-0 h-40 animate-scan bg-gradient-to-b from-transparent via-hud/[0.05] to-transparent" />
+        <div className="absolute inset-x-0 top-0 h-40 animate-scan bg-gradient-to-b from-transparent via-accent/[0.05] to-transparent" />
       </div>
 
       <div className="mx-auto grid w-full max-w-6xl items-center gap-14 px-4 sm:px-6 lg:grid-cols-[1.15fr_0.85fr]">
@@ -93,7 +90,7 @@ export function Hero() {
               <div className="absolute inset-0 bg-gradient-to-t from-bg via-bg/10 to-transparent" />
               <div className="absolute inset-0 bg-[repeating-linear-gradient(0deg,transparent_0_3px,rgba(0,0,0,0.18)_3px_4px)]" />
             </div>
-            <HudCorners className="-inset-3" />
+            <HudCorners className="-inset-3 [&>span]:border-accent/80" />
 
             <div style={{ transform: "translateZ(60px)" }} className="absolute left-3 bottom-10 rounded-xl border border-white/10 bg-bg/90 px-4 py-3 md:bg-bg/80 md:backdrop-blur-md sm:-left-10">
               <div className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-widest text-hud">
@@ -109,23 +106,33 @@ export function Hero() {
         </m.div>
       </div>
 
-      <m.a
-        href="#sobre"
-        aria-label="Rolar para a próxima seção"
+      {/* Barra inferior do hero */}
+      <m.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.4 }}
-        className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 font-mono text-[10px] uppercase tracking-[0.3em] text-muted md:flex"
+        transition={{ delay: 1.2, duration: 0.8 }}
+        className="absolute inset-x-0 bottom-6 mx-auto hidden max-w-6xl items-center justify-between px-4 font-mono text-xs uppercase tracking-[0.3em] text-muted sm:px-6 md:flex"
       >
-        Scroll
-        <span className="relative h-10 w-px overflow-hidden bg-white/10">
-          <m.span
-            className="absolute inset-x-0 top-0 h-4 bg-accent"
-            animate={{ y: [-16, 40] }}
-            transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
-          />
-        </span>
-      </m.a>
+        <div className="flex items-center gap-4">
+          <ArrowRight className="h-4 w-4 text-accent" />
+          <span>Disciplina</span>
+          <span className="text-white/25">/</span>
+          <span>Técnica</span>
+          <span className="text-white/25">/</span>
+          <span>Preparação</span>
+          <span className="ml-2 h-px w-24 bg-gradient-to-r from-accent to-transparent" />
+        </div>
+        <a href="#sobre" className="flex min-h-11 items-center gap-3 transition-colors hover:text-fg">
+          <span className="relative flex h-8 w-5 justify-center rounded-full border border-white/40">
+            <m.span
+              className="mt-1.5 h-1.5 w-0.5 rounded-full bg-accent"
+              animate={{ y: [0, 8, 0], opacity: [1, 0.2, 1] }}
+              transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+            />
+          </span>
+          Role para descobrir
+        </a>
+      </m.div>
     </section>
   );
 }

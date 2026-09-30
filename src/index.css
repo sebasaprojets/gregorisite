@@ -17,10 +17,23 @@
 
   --animate-marquee: marquee 40s linear infinite;
   --animate-scan: scan 6s linear infinite;
+  --animate-drift: drift 28s ease-in-out infinite alternate;
+  --animate-flicker: flicker 5s ease-in-out infinite;
 
   @keyframes marquee {
     from { transform: translateX(0); }
     to { transform: translateX(-50%); }
+  }
+  @keyframes drift {
+    from { transform: scale(1.04) translate3d(0, 0, 0); }
+    to { transform: scale(1.1) translate3d(-1.5%, -1%, 0); }
+  }
+  @keyframes flicker {
+    0%, 100% { opacity: 0.45; }
+    8% { opacity: 0.7; }
+    10% { opacity: 0.35; }
+    12% { opacity: 0.75; }
+    55% { opacity: 0.55; }
   }
   @keyframes scan {
     from { transform: translateY(-100%); }
@@ -36,7 +49,7 @@
     color-scheme: dark;
   }
   body {
-    @apply bg-bg font-sans text-fg antialiased;
+    @apply font-sans text-fg antialiased;
     overflow-x: hidden;
   }
   ::selection {
