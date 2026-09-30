@@ -116,9 +116,9 @@ export const services = [
 ] as const;
 
 export const gallery = [
-  { src: "/images/certificacao.webp", alt: "Entrega de certificado ao fim de um curso", label: "Certificação" },
-  { src: "/images/treino-campo.webp", alt: "Instrutor montando exercício com cones em campo de areia", label: "Treino de campo" },
-  { src: "/images/retrato.webp", alt: "Retrato de instrutor de braços cruzados", label: "Instrutor" },
-  { src: "/images/equipe.webp", alt: "Dois instrutores com equipamento tático em estande de tiro", label: "Equipe" },
-  { src: "/images/aula.webp", alt: "Gravação de uma aula em vídeo", label: "Aula" },
+  { src: "images/certificacao.webp", alt: "Entrega de certificado ao fim de um curso", label: "Certificação" },
+  { src: "images/treino-campo.webp", alt: "Instrutor montando exercício com cones em campo de areia", label: "Treino de campo" },
+  { src: "images/retrato.webp", alt: "Retrato de instrutor de braços cruzados", label: "Instrutor" },
+  { src: "images/equipe.webp", alt: "Dois instrutores com equipamento tático em estande de tiro", label: "Equipe" },
+  { src: "images/aula.webp", alt: "Gravação de uma aula em vídeo", label: "Aula" },
 ];

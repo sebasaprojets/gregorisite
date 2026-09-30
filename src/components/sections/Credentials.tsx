@@ -36,7 +36,7 @@ export function Credentials() {
                     </div>
 
                     {i === 0 && (
-                      <img src="/images/vikings-logo.webp" alt="" className="h-24 w-24 rounded-full border border-white/10 object-cover md:h-32 md:w-32" />
+                      <img src="images/vikings-logo.webp" alt="" className="h-24 w-24 rounded-full border border-white/10 object-cover md:h-32 md:w-32" />
                     )}
 
                     <div>

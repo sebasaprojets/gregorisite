@@ -82,7 +82,7 @@ export function Hero() {
           <TiltCard className="aspect-[3/4]">
             <div className="absolute inset-0 overflow-hidden rounded-3xl border border-white/10 bg-surface">
               <img
-                src="/images/retrato.webp"
+                src="images/retrato.webp"
                 alt="Retrato de Gregori Silva"
                 className="h-full w-full object-cover object-top grayscale-[35%] contrast-110"
                 fetchPriority="high"
