@@ -12,6 +12,9 @@ npm run build    # gera a pasta dist/
 
 - Textos, links e números: `src/data/profile.ts`
 - Fotos: `public/images/` (as atuais foram recortadas do print do Instagram; troque por fotos em alta resolução com o mesmo nome)
+- Seção Manifesto (lanterna interativa): `src/components/sections/Manifesto.tsx` usa
+  `src/components/ui/flashlight-text-reveal.tsx` — shader WebGL "Mesh drift" do
+  Shader Builder do 21st.dev. Carregado sob demanda e pausado fora da tela.
 - Design system: `design-system/gregori-silva/MASTER.md`
 - Imagem de compartilhamento: `node scripts/gen-og.mjs` gera `public/images/og.jpg`
 - Fundo (fumaça, luz no chão, silhuetas): gerado por `node scripts/gen-bg.mjs` em `public/images/bg-*.webp`

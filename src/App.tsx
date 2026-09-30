@@ -6,6 +6,7 @@ import { Credentials } from "@/components/sections/Credentials";
 import { Services } from "@/components/sections/Services";
 import { Gallery } from "@/components/sections/Gallery";
 import { Contact } from "@/components/sections/Contact";
+import { Manifesto } from "@/components/sections/Manifesto";
 import { SiteBackground, ViewportFrame } from "@/components/ui/site-background";
 
 const loadFeatures = () => import("@/lib/motion-features").then((mod) => mod.default);
@@ -23,6 +24,7 @@ export default function App() {
         <main>
           <Hero />
           {/* Abaixo do hero o fundo continua, um pouco mais escuro para o texto ler bem */}
+          <Manifesto />
           <div className="bg-[linear-gradient(to_bottom,transparent,rgb(7_8_10/0.62)_16rem)]">
             <About />
             <Credentials />

@@ -30,7 +30,7 @@ export function Gallery() {
     <section id="galeria" className="py-24 sm:py-32">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <Reveal>
-          <SectionLabel index="04">Galeria</SectionLabel>
+          <SectionLabel index="05">Galeria</SectionLabel>
           <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
             <h2 className="font-display text-4xl font-bold uppercase leading-tight sm:text-5xl">
               Em <span className="text-accent">campo</span>

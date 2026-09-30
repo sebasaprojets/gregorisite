@@ -16,7 +16,7 @@ export function Contact() {
 
           <div className="relative">
             <div className="flex justify-center">
-              <SectionLabel index="05">Contato</SectionLabel>
+              <SectionLabel index="06">Contato</SectionLabel>
             </div>
             <img src="images/avatar.webp" alt="Foto de perfil de Gregori Silva" className="mx-auto mb-6 h-20 w-20 rounded-full border-2 border-accent/60 object-cover" />
             <h2 className="mx-auto max-w-3xl font-display text-4xl font-bold uppercase leading-tight sm:text-6xl">

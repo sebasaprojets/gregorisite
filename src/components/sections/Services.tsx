@@ -45,7 +45,7 @@ export function Services() {
       <div aria-hidden className="absolute right-0 top-1/3 -z-10 h-[640px] w-[640px] glow-red-soft" />
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <Reveal>
-          <SectionLabel index="03">Treinamentos</SectionLabel>
+          <SectionLabel index="04">Treinamentos</SectionLabel>
           <h2 className="max-w-3xl font-display text-4xl font-bold uppercase leading-tight sm:text-5xl">
             Preparação para o <span className="text-accent">momento crítico</span>
           </h2>

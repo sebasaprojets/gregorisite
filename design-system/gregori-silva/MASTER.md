@@ -35,6 +35,17 @@ Regras seguidas no site, no formato do UI UX Pro Max (mesma estrutura usada no `
 
 Spotlight card, magnetic button, tilt card, scramble text, animated counter, marquee, reveal, HUD corners.
 
+## Seção Manifesto
+
+Lanterna interativa sobre uma parede de shader WebGL (componente do 21st.dev,
+`flashlight-text-reveal`). Regras aplicadas:
+
+- Só baixa o shader quando a seção chega perto da tela; pausa quando sai dela.
+- Celular: sem desfoque, menos granulado, luz mais larga e canvas a 1,25× em
+  vez de 2× (o dedo tapa o ponto exato e o custo cai quase pela metade).
+- O texto é DOM real: aparece no HTML pré-renderizado e nos leitores de tela.
+- Sem WebGL, o próprio componente cai para um gradiente com luz fixa no centro.
+
 ## Checklist de UX
 
 - Alvos de toque ≥ 44px; foco visível; `cursor: pointer` em links e botões.

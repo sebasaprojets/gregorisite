@@ -27,7 +27,7 @@ export function About() {
       <div className="mx-auto mt-24 grid max-w-6xl gap-16 px-4 sm:px-6 lg:grid-cols-2">
         <div>
           <Reveal>
-            <SectionLabel index="01">Sobre</SectionLabel>
+            <SectionLabel index="02">Sobre</SectionLabel>
             <h2 className="font-display text-4xl font-bold uppercase leading-tight sm:text-5xl">
               Formação que <span className="text-accent">salva vidas</span> dentro e fora do campo.
             </h2>

@@ -13,7 +13,7 @@ export function Credentials() {
       <div aria-hidden className="bg-grid mask-radial absolute inset-0 -z-10 opacity-60" />
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <Reveal>
-          <SectionLabel index="02">Credenciais</SectionLabel>
+          <SectionLabel index="03">Credenciais</SectionLabel>
           <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
             <h2 className="max-w-2xl font-display text-4xl font-bold uppercase leading-tight sm:text-5xl">
               Onde Gregori <span className="text-accent">atua</span>
