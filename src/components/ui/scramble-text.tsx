@@ -6,7 +6,8 @@ const CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#/<>_";
 // Texto que "decodifica" letra por letra, estilo terminal.
 export function ScrambleText({ text, delay = 0, className }: { text: string; delay?: number; className?: string }) {
   const reduce = useReducedMotion();
-  const [out, setOut] = useState(reduce ? text : "");
+  // Começa com o texto real: aparece já no HTML pré-renderizado e só depois embaralha.
+  const [out, setOut] = useState(text);
 
   useEffect(() => {
     if (reduce) return;

@@ -11,8 +11,8 @@ export function Reveal({ children, delay = 0, className }: { children: ReactNode
   return (
     <m.div
       className={className}
-      initial={touch ? { opacity: 0, y: 18 } : { opacity: 0, y: 28, filter: "blur(6px)" }}
-      whileInView={touch ? { opacity: 1, y: 0 } : { opacity: 1, y: 0, filter: "blur(0px)" }}
+      initial={touch ? { opacity: 0, y: 18, filter: "none" } : { opacity: 0, y: 28, filter: "blur(6px)" }}
+      whileInView={touch ? { opacity: 1, y: 0, filter: "none" } : { opacity: 1, y: 0, filter: "blur(0px)" }}
       viewport={{ once: true, margin: touch ? "0px 0px -40px 0px" : "-80px" }}
       transition={{ duration: touch ? 0.5 : 0.7, delay: touch ? Math.min(delay, 0.15) : delay, ease }}
     >
