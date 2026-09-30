@@ -11,7 +11,7 @@ export function Contact() {
       <Reveal className="mx-auto max-w-6xl">
         <div className="noise relative overflow-hidden rounded-[2rem] border border-white/10 bg-gradient-to-br from-surface-2 via-surface to-bg px-6 py-16 text-center sm:px-12 sm:py-24">
           <div aria-hidden className="bg-grid mask-radial absolute inset-0" />
-          <div aria-hidden className="absolute left-1/2 top-0 h-72 w-[36rem] -translate-x-1/2 rounded-full bg-accent/25 blur-[120px]" />
+          <div aria-hidden className="absolute left-1/2 top-0 h-96 w-[44rem] -translate-x-1/2 -translate-y-1/3 glow-red" />
           <HudCorners className="inset-5" />
 
           <div className="relative">

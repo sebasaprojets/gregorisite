@@ -1,5 +1,5 @@
 import { useRef, type ReactNode } from "react";
-import { motion, useMotionValue, useSpring } from "framer-motion";
+import { m, useMotionValue, useSpring } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 type Props = {
@@ -17,7 +17,7 @@ export function MagneticButton({ href, children, variant = "primary", className,
   const y = useSpring(useMotionValue(0), { stiffness: 200, damping: 15 });
 
   return (
-    <motion.a
+    <m.a
       ref={ref}
       href={href}
       {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
@@ -37,7 +37,7 @@ export function MagneticButton({ href, children, variant = "primary", className,
         "group relative inline-flex min-h-12 items-center justify-center gap-2 overflow-hidden rounded-full px-7 font-display text-sm font-semibold uppercase tracking-[0.14em] transition-colors",
         variant === "primary"
           ? "bg-accent text-white shadow-[0_0_40px_-8px_rgba(229,36,59,0.8)] hover:bg-accent-soft"
-          : "border border-white/15 bg-white/[0.03] text-fg backdrop-blur hover:border-white/35 hover:bg-white/[0.07]",
+          : "border border-white/15 bg-white/[0.03] text-fg md:backdrop-blur hover:border-white/35 hover:bg-white/[0.07]",
         className,
       )}
     >
@@ -48,6 +48,6 @@ export function MagneticButton({ href, children, variant = "primary", className,
         />
       )}
       <span className="relative flex items-center gap-2">{children}</span>
-    </motion.a>
+    </m.a>
   );
 }

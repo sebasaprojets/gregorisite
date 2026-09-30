@@ -25,7 +25,7 @@ export function Credentials() {
         <div className="mt-14 grid auto-rows-[minmax(200px,auto)] gap-4 md:grid-cols-4">
           {credentials.map((c, i) => (
             <Reveal key={c.code} delay={i * 0.06} className={cn(spans[i])}>
-              <a href={c.href} target="_blank" rel="noopener noreferrer" className="block h-full rounded-2xl" aria-label={`${c.title}: ${c.role}. Abrir no Instagram`}>
+              <a href={c.href} target="_blank" rel="noopener noreferrer" className="block h-full touch-manipulation rounded-2xl transition-transform duration-200 active:scale-[0.98]" aria-label={`${c.title}: ${c.role}. Abrir no Instagram`}>
                 <SpotlightCard className="flex h-full flex-col">
                   <div className={cn("flex h-full flex-col justify-between gap-8 p-6", i === 0 && "md:p-9")}>
                     <div className="flex items-start justify-between">

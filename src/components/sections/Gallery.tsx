@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, m } from "framer-motion";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import { Instagram } from "@/components/ui/instagram-icon";
 import { gallery, profile } from "@/data/profile";
@@ -49,25 +49,28 @@ export function Gallery() {
         <div className="mt-14 grid auto-rows-[180px] grid-cols-2 gap-3 sm:auto-rows-[220px] md:grid-cols-4">
           {gallery.map((g, i) => (
             <Reveal key={g.src} delay={i * 0.06} className={cn(layout[i])}>
-              <motion.button
+              <m.button
                 type="button"
                 layoutId={`photo-${i}`}
                 onClick={() => setOpen(i)}
                 aria-label={`Ampliar foto: ${g.label}`}
-                className="group relative h-full w-full overflow-hidden rounded-2xl border border-line bg-surface"
+                whileTap={{ scale: 0.97 }}
+                className="group relative h-full w-full touch-manipulation overflow-hidden rounded-2xl border border-line bg-surface"
               >
                 <img
                   src={g.src}
                   alt={g.alt}
                   loading="lazy"
-                  className="h-full w-full object-cover grayscale-[40%] transition-all duration-700 group-hover:scale-105 group-hover:grayscale-0"
+                  decoding="async"
+                  draggable={false}
+                  className="h-full w-full object-cover transition-[transform,filter] duration-700 [@media(hover:hover)]:grayscale-[40%] group-hover:scale-105 group-hover:grayscale-0"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-bg/90 via-transparent to-transparent opacity-80 transition-opacity group-hover:opacity-100" />
                 <div className="absolute bottom-0 left-0 flex w-full items-center justify-between p-4">
                   <span className="font-display text-sm font-semibold uppercase tracking-widest">{g.label}</span>
                   <span className="font-mono text-xs text-hud">0{i + 1}</span>
                 </div>
-              </motion.button>
+              </m.button>
             </Reveal>
           ))}
         </div>
@@ -75,24 +78,37 @@ export function Gallery() {
 
       <AnimatePresence>
         {open !== null && (
-          <motion.div
+          <m.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[60] flex items-center justify-center bg-black/90 p-4 backdrop-blur-md"
+            className="fixed inset-0 z-[60] flex items-center justify-center bg-black/[0.97] p-4"
             onClick={() => setOpen(null)}
             role="dialog"
             aria-modal="true"
             aria-label={gallery[open].label}
           >
-            <motion.img
+            <m.img
               layoutId={`photo-${open}`}
               src={gallery[open].src}
               alt={gallery[open].alt}
-              className="max-h-[85vh] max-w-full rounded-2xl border border-white/10 object-contain"
+              className="max-h-[80svh] max-w-full touch-pan-y select-none rounded-2xl border border-white/10 object-contain"
               onClick={(e) => e.stopPropagation()}
+              draggable={false}
+              drag="x"
+              dragConstraints={{ left: 0, right: 0 }}
+              dragElastic={0.5}
+              onDragEnd={(_, info) => {
+                // Deslizar para o lado troca de foto no celular
+                if (info.offset.x < -60 || info.velocity.x < -400) setOpen((open + 1) % gallery.length);
+                else if (info.offset.x > 60 || info.velocity.x > 400) setOpen((open - 1 + gallery.length) % gallery.length);
+              }}
             />
-            <button type="button" aria-label="Fechar" onClick={() => setOpen(null)} className="absolute right-4 top-4 grid h-12 w-12 place-items-center rounded-full border border-white/15 bg-bg/60">
+            <div className="pointer-events-none absolute inset-x-0 bottom-[max(1.5rem,env(safe-area-inset-bottom))] text-center font-mono text-xs uppercase tracking-widest text-muted">
+              {open + 1} / {gallery.length} · {gallery[open].label}
+              <span className="mt-1 block normal-case tracking-normal sm:hidden">Deslize para o lado para trocar de foto</span>
+            </div>
+            <button type="button" aria-label="Fechar" onClick={() => setOpen(null)} className="absolute right-4 top-[max(1rem,env(safe-area-inset-top))] grid h-12 w-12 place-items-center rounded-full border border-white/15 bg-bg/60">
               <X className="h-5 w-5" />
             </button>
             <button
@@ -102,7 +118,7 @@ export function Gallery() {
                 e.stopPropagation();
                 setOpen((open - 1 + gallery.length) % gallery.length);
               }}
-              className="absolute left-4 grid h-12 w-12 place-items-center rounded-full border border-white/15 bg-bg/60"
+              className="absolute left-4 hidden h-12 w-12 sm:grid place-items-center rounded-full border border-white/15 bg-bg/60"
             >
               <ChevronLeft className="h-5 w-5" />
             </button>
@@ -113,11 +129,11 @@ export function Gallery() {
                 e.stopPropagation();
                 setOpen((open + 1) % gallery.length);
               }}
-              className="absolute right-4 grid h-12 w-12 place-items-center rounded-full border border-white/15 bg-bg/60"
+              className="absolute right-4 hidden h-12 w-12 sm:grid place-items-center rounded-full border border-white/15 bg-bg/60"
             >
               <ChevronRight className="h-5 w-5" />
             </button>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
     </section>

@@ -1,5 +1,5 @@
 import { useRef, type ReactNode } from "react";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { m, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 // Card com inclinação 3D conforme a posição do mouse.
@@ -12,7 +12,7 @@ export function TiltCard({ children, className }: { children: ReactNode; classNa
 
   return (
     <div style={{ perspective: 1200 }} className={className}>
-      <motion.div
+      <m.div
         ref={ref}
         style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
         onPointerMove={(e) => {
@@ -28,7 +28,7 @@ export function TiltCard({ children, className }: { children: ReactNode; classNa
         className={cn("relative h-full w-full")}
       >
         {children}
-      </motion.div>
+      </m.div>
     </div>
   );
 }

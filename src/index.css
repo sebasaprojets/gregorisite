@@ -92,3 +92,23 @@
     animation-iteration-count: 1 !important;
   }
 }
+
+@layer utilities {
+  /* Brilhos de fundo com gradiente radial: bem mais leve que filter: blur() no celular */
+  .glow-red {
+    background: radial-gradient(closest-side, rgb(229 36 59 / 0.26), transparent);
+  }
+  .glow-red-soft {
+    background: radial-gradient(closest-side, rgb(229 36 59 / 0.14), transparent);
+  }
+  .glow-cyan {
+    background: radial-gradient(closest-side, rgb(34 211 238 / 0.12), transparent);
+  }
+}
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-text-size-adjust: 100%;
+  }
+}

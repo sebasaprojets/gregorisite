@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { m, useScroll, useTransform } from "framer-motion";
 import { ArrowDown, MessageCircle, ShieldCheck } from "lucide-react";
 import { profile } from "@/data/profile";
 import { MagneticButton } from "@/components/ui/magnetic-button";
@@ -21,14 +21,14 @@ export function Hero() {
       {/* Fundo: grade, brilhos e linha de varredura */}
       <div aria-hidden className="absolute inset-0 -z-10">
         <div className="bg-grid mask-radial absolute inset-0" />
-        <div className="absolute -left-40 top-10 h-[520px] w-[520px] rounded-full bg-accent/20 blur-[140px]" />
-        <div className="absolute -right-40 bottom-0 h-[420px] w-[420px] rounded-full bg-hud/10 blur-[140px]" />
+        <div className="absolute -left-40 top-10 h-[640px] w-[640px] glow-red" />
+        <div className="absolute -right-40 bottom-0 h-[560px] w-[560px] glow-cyan" />
         <div className="absolute inset-x-0 top-0 h-40 animate-scan bg-gradient-to-b from-transparent via-hud/[0.05] to-transparent" />
       </div>
 
       <div className="mx-auto grid w-full max-w-6xl items-center gap-14 px-4 sm:px-6 lg:grid-cols-[1.15fr_0.85fr]">
-        <motion.div style={{ y: yText, opacity }}>
-          <motion.div
+        <m.div style={{ y: yText, opacity }}>
+          <m.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease }}
@@ -39,14 +39,14 @@ export function Hero() {
               <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
             </span>
             CEO · Vikings Tactical Group
-          </motion.div>
+          </m.div>
 
           <h1 className="font-display text-[clamp(3rem,9vw,6.5rem)] font-bold uppercase leading-[0.9] tracking-tight">
             <ScrambleText text="Gregori" className="block text-gradient" />
             <ScrambleText text="Silva" delay={0.25} className="block text-accent" />
           </h1>
 
-          <motion.p
+          <m.p
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5, ease }}
@@ -55,24 +55,24 @@ export function Hero() {
             {profile.role}. Instrutor <span className="text-fg">Stop the Bleed</span>,{" "}
             <span className="text-fg">TECC/TCCC</span>, <span className="text-fg">NATI Tática Brasil</span> e{" "}
             <span className="text-fg">C3 Cursos</span>. {profile.tagline}
-          </motion.p>
+          </m.p>
 
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.7, ease }}
             className="mt-9 flex flex-wrap gap-3"
           >
-            <MagneticButton href={profile.dm} external>
+            <MagneticButton href={profile.dm} external className="w-full sm:w-auto">
               <MessageCircle className="h-4 w-4" /> Falar com Gregori
             </MagneticButton>
-            <MagneticButton href="#treinamentos" variant="ghost">
+            <MagneticButton href="#treinamentos" variant="ghost" className="w-full sm:w-auto">
               Ver treinamentos <ArrowDown className="h-4 w-4" />
             </MagneticButton>
-          </motion.div>
-        </motion.div>
+          </m.div>
+        </m.div>
 
-        <motion.div
+        <m.div
           style={{ y: yImg }}
           initial={{ opacity: 0, scale: 0.92 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -86,13 +86,16 @@ export function Hero() {
                 alt="Retrato de Gregori Silva"
                 className="h-full w-full object-cover object-top grayscale-[35%] contrast-110"
                 fetchPriority="high"
+                decoding="async"
+                width={480}
+                height={808}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-bg via-bg/10 to-transparent" />
               <div className="absolute inset-0 bg-[repeating-linear-gradient(0deg,transparent_0_3px,rgba(0,0,0,0.18)_3px_4px)]" />
             </div>
             <HudCorners className="-inset-3" />
 
-            <div style={{ transform: "translateZ(60px)" }} className="absolute left-3 bottom-10 rounded-xl border border-white/10 bg-bg/80 px-4 py-3 backdrop-blur-md sm:-left-10">
+            <div style={{ transform: "translateZ(60px)" }} className="absolute left-3 bottom-10 rounded-xl border border-white/10 bg-bg/90 px-4 py-3 md:bg-bg/80 md:backdrop-blur-md sm:-left-10">
               <div className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-widest text-hud">
                 <ShieldCheck className="h-4 w-4" /> Status
               </div>
@@ -103,10 +106,10 @@ export function Hero() {
               <div className="text-accent-soft">APH · Tático</div>
             </div>
           </TiltCard>
-        </motion.div>
+        </m.div>
       </div>
 
-      <motion.a
+      <m.a
         href="#sobre"
         aria-label="Rolar para a próxima seção"
         initial={{ opacity: 0 }}
@@ -116,13 +119,13 @@ export function Hero() {
       >
         Scroll
         <span className="relative h-10 w-px overflow-hidden bg-white/10">
-          <motion.span
+          <m.span
             className="absolute inset-x-0 top-0 h-4 bg-accent"
             animate={{ y: [-16, 40] }}
             transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
           />
         </span>
-      </motion.a>
+      </m.a>
     </section>
   );
 }

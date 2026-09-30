@@ -1,5 +1,5 @@
 import { useRef, type ReactNode } from "react";
-import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
+import { m, useMotionTemplate, useMotionValue } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 // Card com luz que segue o cursor (padrão "spotlight card" do 21st.dev).
@@ -34,7 +34,7 @@ export function SpotlightCard({
         className,
       )}
     >
-      <motion.div aria-hidden className="pointer-events-none absolute inset-0" style={{ background }} />
+      <m.div aria-hidden className="pointer-events-none absolute inset-0" style={{ background }} />
       <div className="relative">{children}</div>
     </div>
   );

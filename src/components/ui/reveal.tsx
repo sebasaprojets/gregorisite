@@ -1,18 +1,23 @@
 import type { ReactNode } from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
+import { useIsTouch } from "@/lib/use-touch";
 
-// Entrada suave ao rolar a página.
+const ease = [0.16, 1, 0.3, 1] as const;
+
+// Entrada suave ao rolar a página. No celular: sem desfoque (caro para a GPU),
+// deslocamento menor e mais rápido, para parecer nativo.
 export function Reveal({ children, delay = 0, className }: { children: ReactNode; delay?: number; className?: string }) {
+  const touch = useIsTouch();
   return (
-    <motion.div
+    <m.div
       className={className}
-      initial={{ opacity: 0, y: 28, filter: "blur(6px)" }}
-      whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] }}
+      initial={touch ? { opacity: 0, y: 18 } : { opacity: 0, y: 28, filter: "blur(6px)" }}
+      whileInView={touch ? { opacity: 1, y: 0 } : { opacity: 1, y: 0, filter: "blur(0px)" }}
+      viewport={{ once: true, margin: touch ? "0px 0px -40px 0px" : "-80px" }}
+      transition={{ duration: touch ? 0.5 : 0.7, delay: touch ? Math.min(delay, 0.15) : delay, ease }}
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 }
 
